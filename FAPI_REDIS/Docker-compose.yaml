@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  fast_api:
+    image: fast_api
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6370:6379"
